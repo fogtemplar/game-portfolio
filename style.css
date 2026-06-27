@@ -215,6 +215,51 @@ h2 {
   object-fit: cover;
 }
 
+.nanaca-preview {
+  min-height: 230px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 72%, rgba(242, 193, 77, 0.95) 0 10px, transparent 11px),
+    radial-gradient(circle at 72% 30%, rgba(102, 194, 255, 0.8) 0 16px, transparent 17px),
+    linear-gradient(140deg, #171c24 0%, #20302c 48%, #3c2c19 100%);
+}
+
+.nanaca-preview::before {
+  content: "";
+  position: absolute;
+  left: -12%;
+  right: -12%;
+  bottom: 26%;
+  height: 10px;
+  background: rgba(120, 216, 78, 0.9);
+  transform: rotate(-8deg);
+  box-shadow: 0 22px 0 rgba(120, 216, 78, 0.28);
+}
+
+.nanaca-preview::after {
+  content: "";
+  position: absolute;
+  left: 24%;
+  bottom: 36%;
+  width: 74px;
+  height: 32px;
+  border-radius: 999px;
+  background: var(--accent-2);
+  transform: rotate(-8deg);
+  box-shadow: 36px -16px 0 -12px var(--accent-3);
+}
+
+.nanaca-preview span {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1.08;
+}
+
 .card-body {
   padding: 20px;
 }

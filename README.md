@@ -6,6 +6,7 @@ Static portfolio page for the public game repositories under `fogtemplar`.
 
 - <https://github.com/fogtemplar/maple-pang>
 - <https://github.com/fogtemplar/stige-adventure>
+- <https://github.com/fogtemplar/nanaca-like-game>
 - <https://github.com/fogtemplar/maple-td>
 
 ## Local preview
