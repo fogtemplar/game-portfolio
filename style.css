@@ -177,7 +177,7 @@ h2 {
 
 .game-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
@@ -240,10 +240,6 @@ h3 {
   line-height: 1.58;
 }
 
-.compact .card-body p:not(.tag) {
-  min-height: 52px;
-}
-
 .meta {
   display: flex;
   flex-wrap: wrap;
@@ -301,11 +297,11 @@ h3 {
   }
 
   .game-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   .game-card.featured {
-    grid-column: span 2;
+    grid-column: auto;
     grid-template-columns: 1fr;
   }
 

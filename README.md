@@ -6,9 +6,6 @@ Static portfolio page for the public game repositories under `fogtemplar`.
 
 - <https://github.com/fogtemplar/maple-pang>
 - <https://github.com/fogtemplar/stige-adventure>
-- <https://github.com/fogtemplar/maplestory-angry-pang>
-- <https://github.com/fogtemplar/maple-slingshot-pang>
-- <https://github.com/fogtemplar/bubble-rush-arena>
 - <https://github.com/fogtemplar/maple-td>
 
 ## Local preview
