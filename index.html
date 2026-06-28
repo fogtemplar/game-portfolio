@@ -13,22 +13,22 @@
   <body>
     <div class="desktop-shell">
       <aside class="desktop-icons" aria-label="Desktop shortcuts">
-        <a class="desktop-icon" href="#games">
+        <button class="desktop-icon" type="button" data-open-folder="root">
           <span class="icon icon-folder" aria-hidden="true"></span>
           <span>Games</span>
-        </a>
-        <a class="desktop-icon" href="#stack">
+        </button>
+        <button class="desktop-icon" type="button" data-show-window="system-window">
           <span class="icon icon-computer" aria-hidden="true"></span>
           <span>System</span>
-        </a>
-        <a class="desktop-icon" href="https://github.com/fogtemplar">
+        </button>
+        <button class="desktop-icon" type="button" data-open-folder="github">
           <span class="icon icon-network" aria-hidden="true"></span>
           <span>GitHub</span>
-        </a>
-        <a class="desktop-icon" href="./README.md">
+        </button>
+        <button class="desktop-icon" type="button" data-show-window="readme-window">
           <span class="icon icon-document" aria-hidden="true"></span>
           <span>README</span>
-        </a>
+        </button>
       </aside>
 
       <main class="workspace">
@@ -54,150 +54,104 @@
           </div>
 
           <div class="toolbar" aria-label="Explorer toolbar">
-            <a class="tool-button" href="#games">Back</a>
-            <a class="tool-button" href="#stack">Properties</a>
-            <a class="tool-button" href="https://github.com/fogtemplar">GitHub</a>
+            <button class="tool-button" type="button" data-back disabled>Back</button>
+            <button class="tool-button" type="button" data-open-folder="root">Up</button>
+            <button class="tool-button" type="button" data-show-window="system-window">Properties</button>
             <div class="address-bar">
               <span>Address</span>
-              <strong>C:\Portfolio\Games</strong>
+              <strong data-address>C:\Portfolio\Games</strong>
             </div>
           </div>
 
           <div class="explorer-body">
             <nav class="folder-tree" aria-label="Project folders">
               <p class="tree-title">Folders</p>
-              <a href="https://github.com/fogtemplar/maple-td">Maple TD</a>
-              <a href="https://github.com/fogtemplar/maple-pang">Maple Pang</a>
-              <a href="https://github.com/fogtemplar/stige-adventure">Stige Adventure</a>
-              <a href="https://github.com/fogtemplar/nanaca-like-game">Nanaca-Like Game</a>
+              <button type="button" data-open-folder="root">Games</button>
+              <button type="button" data-open-folder="maple-td">Maple TD</button>
+              <button type="button" data-open-folder="maple-pang">Maple Pang</button>
+              <button type="button" data-open-folder="stige-adventure">Stige Adventure</button>
+              <button type="button" data-open-folder="nanaca-like-game">Nanaca-Like Game</button>
+              <button type="button" data-open-folder="github">GitHub</button>
             </nav>
 
-            <div class="file-list">
-              <article class="game-file featured">
-                <a class="preview" href="https://github.com/fogtemplar/maple-td">
-                  <img src="./assets/maple-td.png" alt="Maple TD preview" />
-                </a>
-                <div class="file-info">
-                  <p class="file-type">Tower Defense</p>
-                  <h2>Maple TD</h2>
-                  <p>
-                    MapleStory풍 맵, 스킬, 타워, 적 웨이브, UI 오버레이를 갖춘 대형 타워 디펜스 프로젝트입니다.
-                  </p>
-                  <div class="chips" aria-label="Tech stack">
-                    <span>TypeScript</span>
-                    <span>Vite</span>
-                    <span>Canvas</span>
-                  </div>
-                  <a class="win-button primary" href="https://github.com/fogtemplar/maple-td">Open Repository</a>
-                </div>
-              </article>
-
-              <article class="game-file">
-                <a class="preview" href="https://github.com/fogtemplar/maple-pang">
-                  <img src="./assets/maple-pang.png" alt="Maple Pang preview" />
-                </a>
-                <div class="file-info">
-                  <p class="file-type">Puzzle Shooter</p>
-                  <h2>Maple Pang</h2>
-                  <p>몬스터 버블을 조준해 같은 종류를 맞추고 스테이지를 클리어하는 모바일 중심 퍼즐 슈터입니다.</p>
-                  <div class="chips" aria-label="Tech stack">
-                    <span>React</span>
-                    <span>Mobile</span>
-                    <span>Boss Stage</span>
-                  </div>
-                  <a class="win-button" href="https://github.com/fogtemplar/maple-pang">Open Repository</a>
-                </div>
-              </article>
-
-              <article class="game-file">
-                <a class="preview" href="https://github.com/fogtemplar/stige-adventure">
-                  <img src="./assets/stige-adventure.png" alt="Stige Adventure preview" />
-                </a>
-                <div class="file-info">
-                  <p class="file-type">Action Runner</p>
-                  <h2>Stige Adventure</h2>
-                  <p>맵 이동, 점프, 아이템, 랭킹 UI를 갖춘 모바일 대응 웹 액션 게임입니다.</p>
-                  <div class="chips" aria-label="Tech stack">
-                    <span>React</span>
-                    <span>HUD</span>
-                    <span>Leaderboard</span>
-                  </div>
-                  <a class="win-button" href="https://github.com/fogtemplar/stige-adventure">Open Repository</a>
-                </div>
-              </article>
-
-              <article class="game-file">
-                <a
-                  class="preview nanaca-preview"
-                  href="https://github.com/fogtemplar/nanaca-like-game"
-                  aria-label="Nanaca-Like Game repository"
-                >
-                  <span>Nanaca-Like<br />Game.exe</span>
-                </a>
-                <div class="file-info">
-                  <p class="file-type">Physics Action</p>
-                  <h2>Nanaca-Like Game</h2>
-                  <p>Phaser 기반의 발사, 비행, 아이템, 미션, 강화 시스템을 갖춘 Nanaca Crash 스타일 웹 게임입니다.</p>
-                  <div class="chips" aria-label="Tech stack">
-                    <span>Phaser</span>
-                    <span>React</span>
-                    <span>TypeScript</span>
-                  </div>
-                  <a class="win-button" href="https://github.com/fogtemplar/nanaca-like-game">Open Repository</a>
-                </div>
-              </article>
-            </div>
+            <div class="file-list" data-folder-view aria-live="polite"></div>
           </div>
 
           <div class="status-bar">
-            <span>4 object(s)</span>
-            <span>Public GitHub repositories</span>
+            <span data-count>0 object(s)</span>
+            <span data-status>Ready</span>
           </div>
         </section>
 
         <aside class="side-stack">
-          <section class="window preview-window" aria-label="Featured game preview">
+          <section class="window preview-window" data-window="preview-window" aria-label="Featured game preview">
             <div class="title-bar inactive">
               <div class="title-left">
                 <span class="mini-icon mini-image" aria-hidden="true"></span>
-                <h2>Preview Player</h2>
+                <h2 data-preview-title>Preview Player</h2>
               </div>
-              <div class="window-controls" aria-hidden="true">
-                <span></span>
-                <span></span>
-                <span></span>
+              <div class="window-controls">
+                <button type="button" aria-label="Minimize preview" data-hide-window="preview-window"></button>
+                <button type="button" aria-label="Restore preview"></button>
+                <button type="button" aria-label="Close preview" data-hide-window="preview-window"></button>
               </div>
             </div>
             <div class="preview-screen">
-              <img src="./assets/maple-td.png" alt="Maple TD gameplay preview" />
+              <img data-preview-image src="./assets/maple-td.png" alt="Maple TD gameplay preview" />
             </div>
           </section>
 
-          <section id="stack" class="window system-window" aria-labelledby="system-title">
+          <section id="stack" class="window system-window" data-window="system-window" aria-labelledby="system-title">
             <div class="title-bar">
               <div class="title-left">
                 <span class="mini-icon mini-computer" aria-hidden="true"></span>
                 <h2 id="system-title">System Properties</h2>
               </div>
-              <div class="window-controls" aria-hidden="true">
-                <span></span>
-                <span></span>
-                <span></span>
+              <div class="window-controls">
+                <button type="button" aria-label="Minimize system" data-hide-window="system-window"></button>
+                <button type="button" aria-label="Restore system"></button>
+                <button type="button" aria-label="Close system" data-hide-window="system-window"></button>
               </div>
             </div>
             <div class="tabs" aria-label="System property tabs">
-              <span class="active">General</span>
-              <span>Stack</span>
-              <span>Deploy</span>
+              <button class="active" type="button" data-tab="general">General</button>
+              <button type="button" data-tab="stack">Stack</button>
+              <button type="button" data-tab="deploy">Deploy</button>
             </div>
-            <div class="system-content">
+            <div class="system-content" data-tab-panel="general">
               <p><strong>Portfolio OS:</strong> Web Game Portfolio 98</p>
               <p><strong>Owner:</strong> fogtemplar</p>
+              <p><strong>Root:</strong> C:\Portfolio\Games</p>
+            </div>
+            <div class="system-content is-hidden" data-tab-panel="stack">
               <ul>
                 <li>Canvas 기반 게임 루프와 모바일 터치 조작</li>
                 <li>MapleStory풍 로컬 에셋, BGM/SFX, 스프라이트 애니메이션</li>
                 <li>React/Vite 기반 HUD, 모달, 랭킹 UI, 정적 배포 구조</li>
               </ul>
+            </div>
+            <div class="system-content is-hidden" data-tab-panel="deploy">
+              <p><strong>Repository:</strong> github.com/fogtemplar/game-portfolio</p>
+              <p><strong>Pages:</strong> fogtemplar.github.io/game-portfolio</p>
+            </div>
+          </section>
+
+          <section class="window readme-window is-hidden" data-window="readme-window" aria-labelledby="readme-title">
+            <div class="title-bar">
+              <div class="title-left">
+                <span class="mini-icon mini-document" aria-hidden="true"></span>
+                <h2 id="readme-title">README.txt</h2>
+              </div>
+              <div class="window-controls">
+                <button type="button" aria-label="Minimize README" data-hide-window="readme-window"></button>
+                <button type="button" aria-label="Restore README"></button>
+                <button type="button" aria-label="Close README" data-hide-window="readme-window"></button>
+              </div>
+            </div>
+            <div class="notepad-body">
+              <p>fogtemplar Game Portfolio 98</p>
+              <p>Windows 98 스타일의 Explorer 안에서 공개 게임 저장소를 폴더처럼 탐색합니다.</p>
+              <p>각 프로젝트 폴더에는 미리보기 이미지, README 파일, GitHub 저장소 바로가기가 들어 있습니다.</p>
             </div>
           </section>
         </aside>
@@ -209,13 +163,15 @@
         <summary class="start-button">Start</summary>
         <div class="start-panel">
           <strong>fogtemplar 98</strong>
-          <a href="#games">Programs - Games</a>
-          <a href="#stack">Settings - System</a>
-          <a href="https://github.com/fogtemplar">Network - GitHub</a>
+          <button type="button" data-open-folder="root">Programs - Games</button>
+          <button type="button" data-show-window="system-window">Settings - System</button>
+          <button type="button" data-show-window="readme-window">Documents - README</button>
+          <button type="button" data-open-folder="github">Network - GitHub</button>
         </div>
       </details>
-      <a class="task-button active" href="#games">Portfolio Explorer</a>
-      <a class="task-button" href="#stack">System Properties</a>
+      <button class="task-button active" type="button" data-open-folder="root">Portfolio Explorer</button>
+      <button class="task-button" type="button" data-show-window="system-window">System Properties</button>
+      <button class="task-button" type="button" data-show-window="readme-window">README.txt</button>
       <div class="tray">
         <span>KO</span>
         <time id="clock" datetime="2026-06-28T00:00:00+09:00">--:--</time>
@@ -223,6 +179,226 @@
     </footer>
 
     <script>
+      const projects = {
+        "maple-td": {
+          name: "Maple TD",
+          type: "Tower Defense",
+          path: "C:\\Portfolio\\Games\\Maple TD",
+          image: "./assets/maple-td.png",
+          repo: "https://github.com/fogtemplar/maple-td",
+          stack: ["TypeScript", "Vite", "Canvas"],
+          description:
+            "MapleStory풍 맵, 스킬, 타워, 적 웨이브, UI 오버레이를 갖춘 대형 타워 디펜스 프로젝트입니다.",
+        },
+        "maple-pang": {
+          name: "Maple Pang",
+          type: "Puzzle Shooter",
+          path: "C:\\Portfolio\\Games\\Maple Pang",
+          image: "./assets/maple-pang.png",
+          repo: "https://github.com/fogtemplar/maple-pang",
+          stack: ["React", "Mobile", "Boss Stage"],
+          description: "몬스터 버블을 조준해 같은 종류를 맞추고 스테이지를 클리어하는 모바일 중심 퍼즐 슈터입니다.",
+        },
+        "stige-adventure": {
+          name: "Stige Adventure",
+          type: "Action Runner",
+          path: "C:\\Portfolio\\Games\\Stige Adventure",
+          image: "./assets/stige-adventure.png",
+          repo: "https://github.com/fogtemplar/stige-adventure",
+          stack: ["React", "HUD", "Leaderboard"],
+          description: "맵 이동, 점프, 아이템, 랭킹 UI를 갖춘 모바일 대응 웹 액션 게임입니다.",
+        },
+        "nanaca-like-game": {
+          name: "Nanaca-Like Game",
+          type: "Physics Action",
+          path: "C:\\Portfolio\\Games\\Nanaca-Like Game",
+          image: "",
+          repo: "https://github.com/fogtemplar/nanaca-like-game",
+          stack: ["Phaser", "React", "TypeScript"],
+          description:
+            "Phaser 기반의 발사, 비행, 아이템, 미션, 강화 시스템을 갖춘 Nanaca Crash 스타일 웹 게임입니다.",
+        },
+      };
+
+      const folderView = document.querySelector("[data-folder-view]");
+      const address = document.querySelector("[data-address]");
+      const count = document.querySelector("[data-count]");
+      const status = document.querySelector("[data-status]");
+      const backButton = document.querySelector("[data-back]");
+      const previewTitle = document.querySelector("[data-preview-title]");
+      const previewImage = document.querySelector("[data-preview-image]");
+      const historyStack = [];
+      let currentFolder = "root";
+
+      function iconMarkup(kind) {
+        if (kind === "folder") return '<span class="file-icon file-folder" aria-hidden="true"></span>';
+        if (kind === "image") return '<span class="file-icon file-image" aria-hidden="true"></span>';
+        if (kind === "shortcut") return '<span class="file-icon file-shortcut" aria-hidden="true"></span>';
+        return '<span class="file-icon file-document" aria-hidden="true"></span>';
+      }
+
+      function chipsMarkup(items) {
+        return items.map((item) => `<span>${item}</span>`).join("");
+      }
+
+      function projectPreview(project) {
+        if (project.image) {
+          return `<img src="${project.image}" alt="${project.name} preview" />`;
+        }
+
+        return '<span>Nanaca-Like<br />Game.exe</span>';
+      }
+
+      function setPreview(project) {
+        if (!project || !project.image) return;
+        previewTitle.textContent = `${project.name} Preview`;
+        previewImage.src = project.image;
+        previewImage.alt = `${project.name} gameplay preview`;
+        showWindow("preview-window");
+      }
+
+      function folderButton(id, project) {
+        return `
+          <button class="folder-item" type="button" data-open-folder="${id}">
+            ${iconMarkup("folder")}
+            <span class="folder-name">${project.name}</span>
+            <span class="folder-kind">File folder</span>
+          </button>
+        `;
+      }
+
+      function renderRoot() {
+        const folders = Object.entries(projects).map(([id, project]) => folderButton(id, project)).join("");
+        folderView.className = "file-list icon-view";
+        folderView.innerHTML = folders;
+        address.textContent = "C:\\Portfolio\\Games";
+        count.textContent = `${Object.keys(projects).length} object(s)`;
+        status.textContent = "File folders";
+      }
+
+      function renderGithubFolder() {
+        folderView.className = "file-list detail-view";
+        folderView.innerHTML = `
+          <a class="detail-file" href="https://github.com/fogtemplar">
+            ${iconMarkup("shortcut")}
+            <span>fogtemplar.profile.url</span>
+            <span>Internet Shortcut</span>
+          </a>
+          <a class="detail-file" href="https://github.com/fogtemplar/game-portfolio">
+            ${iconMarkup("shortcut")}
+            <span>game-portfolio.repository.url</span>
+            <span>Internet Shortcut</span>
+          </a>
+        `;
+        address.textContent = "C:\\Portfolio\\Network\\GitHub";
+        count.textContent = "2 object(s)";
+        status.textContent = "Internet shortcuts";
+      }
+
+      function renderProjectFolder(id) {
+        const project = projects[id];
+        if (!project) return renderRoot();
+
+        folderView.className = "file-list project-folder";
+        folderView.innerHTML = `
+          <button class="project-preview-file ${project.image ? "" : "nanaca-preview"}" type="button" data-preview="${id}">
+            ${projectPreview(project)}
+            <span class="file-caption">${project.name}.preview</span>
+          </button>
+          <div class="readme-file">
+            <div class="readme-heading">
+              ${iconMarkup("document")}
+              <div>
+                <p>${project.type}</p>
+                <h2>${project.name}</h2>
+              </div>
+            </div>
+            <p>${project.description}</p>
+            <div class="chips" aria-label="Tech stack">${chipsMarkup(project.stack)}</div>
+          </div>
+          <a class="detail-file" href="${project.repo}">
+            ${iconMarkup("shortcut")}
+            <span>${project.name}.repository.url</span>
+            <span>Internet Shortcut</span>
+          </a>
+          <button class="detail-file" type="button" data-show-window="readme-window">
+            ${iconMarkup("document")}
+            <span>README.txt</span>
+            <span>Text Document</span>
+          </button>
+        `;
+        address.textContent = project.path;
+        count.textContent = "4 object(s)";
+        status.textContent = `${project.name} folder`;
+        setPreview(project);
+      }
+
+      function openFolder(id, pushHistory = true) {
+        if (pushHistory && id !== currentFolder) historyStack.push(currentFolder);
+        currentFolder = id;
+        backButton.disabled = historyStack.length === 0;
+        document.querySelectorAll("[data-open-folder]").forEach((button) => {
+          button.classList.toggle("selected", button.dataset.openFolder === id);
+        });
+
+        if (id === "root") renderRoot();
+        else if (id === "github") renderGithubFolder();
+        else renderProjectFolder(id);
+      }
+
+      function showWindow(name) {
+        document.querySelector(`[data-window="${name}"]`)?.classList.remove("is-hidden");
+        document.querySelector(`[data-window="${name}"]`)?.scrollIntoView({ block: "nearest" });
+      }
+
+      function hideWindow(name) {
+        document.querySelector(`[data-window="${name}"]`)?.classList.add("is-hidden");
+      }
+
+      document.addEventListener("click", (event) => {
+        const folderTarget = event.target.closest("[data-open-folder]");
+        if (folderTarget) {
+          event.preventDefault();
+          openFolder(folderTarget.dataset.openFolder);
+          document.querySelector(".start-menu")?.removeAttribute("open");
+          return;
+        }
+
+        const previewTarget = event.target.closest("[data-preview]");
+        if (previewTarget) {
+          setPreview(projects[previewTarget.dataset.preview]);
+          return;
+        }
+
+        const showTarget = event.target.closest("[data-show-window]");
+        if (showTarget) {
+          event.preventDefault();
+          showWindow(showTarget.dataset.showWindow);
+          document.querySelector(".start-menu")?.removeAttribute("open");
+          return;
+        }
+
+        const hideTarget = event.target.closest("[data-hide-window]");
+        if (hideTarget) {
+          hideWindow(hideTarget.dataset.hideWindow);
+        }
+      });
+
+      backButton.addEventListener("click", () => {
+        const previous = historyStack.pop();
+        if (previous) openFolder(previous, false);
+        backButton.disabled = historyStack.length === 0;
+      });
+
+      document.querySelectorAll("[data-tab]").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          document.querySelectorAll("[data-tab]").forEach((item) => item.classList.remove("active"));
+          document.querySelectorAll("[data-tab-panel]").forEach((panel) => panel.classList.add("is-hidden"));
+          tab.classList.add("active");
+          document.querySelector(`[data-tab-panel="${tab.dataset.tab}"]`)?.classList.remove("is-hidden");
+        });
+      });
+
       const clock = document.getElementById("clock");
 
       function updateClock() {
@@ -235,6 +411,7 @@
         clock.dateTime = now.toISOString();
       }
 
+      openFolder("root", false);
       updateClock();
       window.setInterval(updateClock, 30000);
     </script>

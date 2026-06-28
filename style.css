@@ -42,6 +42,10 @@ a {
   text-decoration: none;
 }
 
+button {
+  font: inherit;
+}
+
 img {
   max-width: 100%;
 }
@@ -65,14 +69,19 @@ img {
   width: 76px;
   min-height: 76px;
   padding: 4px;
+  border: 0;
+  background: transparent;
   color: var(--highlight);
+  font: inherit;
   text-align: center;
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.7);
   outline: 1px solid transparent;
+  cursor: default;
 }
 
 .desktop-icon:hover,
-.desktop-icon:focus-visible {
+.desktop-icon:focus-visible,
+.desktop-icon.selected {
   outline: 1px dotted var(--highlight);
   background: rgba(0, 0, 128, 0.24);
 }
@@ -191,7 +200,7 @@ img {
 .tool-button,
 .task-button,
 .start-button,
-.tabs span {
+.tabs button {
   border-style: solid;
   border-width: 2px;
   border-color: var(--highlight) var(--dark-shadow) var(--dark-shadow) var(--highlight);
@@ -257,16 +266,23 @@ img {
   box-shadow: inset 3px 3px 0 #000080;
 }
 
+.mini-document {
+  background: #ffffff;
+  box-shadow: inset 4px 0 0 #eeeeee;
+}
+
 .window-controls {
   display: flex;
   gap: 2px;
 }
 
-.window-controls span {
+.window-controls span,
+.window-controls button {
   width: 18px;
   height: 18px;
   display: block;
   position: relative;
+  padding: 0;
   border-style: solid;
   border-width: 2px;
   border-color: var(--highlight) var(--dark-shadow) var(--dark-shadow) var(--highlight);
@@ -274,7 +290,8 @@ img {
   box-shadow: inset 1px 1px 0 var(--face-light), inset -1px -1px 0 var(--shadow);
 }
 
-.window-controls span:nth-child(1)::before {
+.window-controls span:nth-child(1)::before,
+.window-controls button:nth-child(1)::before {
   content: "";
   position: absolute;
   left: 4px;
@@ -284,7 +301,8 @@ img {
   background: var(--ink);
 }
 
-.window-controls span:nth-child(2)::before {
+.window-controls span:nth-child(2)::before,
+.window-controls button:nth-child(2)::before {
   content: "";
   position: absolute;
   inset: 3px;
@@ -293,7 +311,9 @@ img {
 }
 
 .window-controls span:nth-child(3)::before,
-.window-controls span:nth-child(3)::after {
+.window-controls span:nth-child(3)::after,
+.window-controls button:nth-child(3)::before,
+.window-controls button:nth-child(3)::after {
   content: "";
   position: absolute;
   left: 4px;
@@ -303,11 +323,13 @@ img {
   background: var(--ink);
 }
 
-.window-controls span:nth-child(3)::before {
+.window-controls span:nth-child(3)::before,
+.window-controls button:nth-child(3)::before {
   transform: rotate(45deg);
 }
 
-.window-controls span:nth-child(3)::after {
+.window-controls span:nth-child(3)::after,
+.window-controls button:nth-child(3)::after {
   transform: rotate(-45deg);
 }
 
@@ -343,6 +365,7 @@ img {
   padding: 3px 10px;
   color: var(--ink);
   font-weight: 700;
+  cursor: default;
 }
 
 .tool-button:active,
@@ -351,6 +374,11 @@ img {
 .start-button:active {
   border-color: var(--dark-shadow) var(--highlight) var(--highlight) var(--dark-shadow);
   box-shadow: inset 1px 1px 0 var(--shadow);
+}
+
+.tool-button:disabled {
+  color: var(--shadow);
+  text-shadow: 1px 1px 0 var(--highlight);
 }
 
 .address-bar {
@@ -400,10 +428,22 @@ img {
   font-weight: 700;
 }
 
-.folder-tree a {
+.folder-tree button {
+  padding: 2px 0;
+  border: 0;
+  background: transparent;
   color: var(--link);
+  font: inherit;
+  text-align: left;
   text-decoration: underline;
   text-underline-offset: 2px;
+  cursor: default;
+}
+
+.folder-tree button.selected {
+  color: var(--highlight);
+  background: var(--title);
+  text-decoration: none;
 }
 
 .file-list {
@@ -411,6 +451,213 @@ img {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
+}
+
+.icon-view {
+  align-content: start;
+  grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+}
+
+.folder-item {
+  min-height: 104px;
+  padding: 10px 8px;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 6px;
+  border: 1px solid transparent;
+  background: #ffffff;
+  color: var(--ink);
+  text-align: center;
+  cursor: default;
+}
+
+.folder-item:hover,
+.folder-item:focus-visible {
+  border: 1px dotted var(--ink);
+  background: #dfe8ff;
+}
+
+.folder-name {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-weight: 700;
+}
+
+.folder-kind {
+  color: #555555;
+  font-size: 11px;
+}
+
+.file-icon {
+  width: 42px;
+  height: 34px;
+  display: inline-block;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.file-folder {
+  background: var(--folder);
+  border: 2px solid #805f00;
+  box-shadow: inset 2px 2px 0 #fff1a3, inset -2px -2px 0 #c28e21;
+}
+
+.file-folder::before {
+  content: "";
+  position: absolute;
+  left: 1px;
+  top: -8px;
+  width: 19px;
+  height: 10px;
+  background: var(--folder);
+  border: 2px solid #805f00;
+  border-bottom: 0;
+}
+
+.file-document,
+.file-shortcut,
+.file-image {
+  background: #ffffff;
+  border: 2px solid var(--dark-shadow);
+  box-shadow: inset 3px 0 0 #eeeeee;
+}
+
+.file-document::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 7px;
+  top: 9px;
+  height: 2px;
+  background: #000080;
+  box-shadow: 0 6px 0 #000080, 0 12px 0 #000080;
+}
+
+.file-image {
+  background: linear-gradient(135deg, #ffffff 0 27%, #80c8ff 28% 66%, #51a451 67%);
+}
+
+.file-shortcut::before {
+  content: "";
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  width: 17px;
+  height: 17px;
+  background: #ffffff;
+  border: 1px solid var(--dark-shadow);
+}
+
+.file-shortcut::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 1px;
+  width: 9px;
+  height: 7px;
+  border-left: 3px solid var(--title);
+  border-bottom: 3px solid var(--title);
+  transform: skew(-14deg);
+}
+
+.detail-view {
+  align-content: start;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.detail-file {
+  min-height: 48px;
+  padding: 6px 8px;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) minmax(120px, 0.45fr);
+  gap: 10px;
+  align-items: center;
+  border: 0;
+  border-bottom: 1px solid #dddddd;
+  background: #ffffff;
+  color: var(--ink);
+  text-align: left;
+  cursor: default;
+}
+
+.detail-file:hover,
+.detail-file:focus-visible {
+  background: #000080;
+  color: var(--highlight);
+}
+
+.detail-file span {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.project-folder {
+  align-content: start;
+  grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.1fr);
+}
+
+.project-preview-file {
+  min-height: 284px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #b5b5b5;
+  background: #000000;
+  cursor: default;
+}
+
+.project-preview-file img {
+  width: 100%;
+  height: 100%;
+  min-height: 284px;
+  display: block;
+  object-fit: cover;
+}
+
+.file-caption {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  padding: 4px 6px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.92);
+  color: #000000;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.readme-file {
+  padding: 12px;
+  border: 1px solid #b5b5b5;
+  background: #ffffff;
+}
+
+.readme-heading {
+  margin-bottom: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.readme-heading p,
+.readme-heading h2 {
+  margin: 0;
+}
+
+.readme-heading p {
+  color: #5a5a5a;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.readme-heading h2 {
+  font-size: 20px;
+  line-height: 1.12;
 }
 
 .game-file {
@@ -590,9 +837,11 @@ img {
   background: var(--face);
 }
 
-.tabs span {
+.tabs button {
   padding: 4px 10px;
   border-bottom-color: var(--face);
+  color: var(--ink);
+  cursor: default;
 }
 
 .tabs .active {
@@ -621,6 +870,25 @@ img {
 
 .system-content li + li {
   margin-top: 8px;
+}
+
+.is-hidden {
+  display: none !important;
+}
+
+.notepad-body {
+  margin: 8px;
+  min-height: 170px;
+  padding: 12px;
+  border: 2px solid;
+  border-color: var(--dark-shadow) var(--highlight) var(--highlight) var(--dark-shadow);
+  background: #ffffff;
+  font-family: "Lucida Console", Consolas, monospace;
+  line-height: 1.65;
+}
+
+.notepad-body p {
+  margin: 0 0 10px;
 }
 
 .taskbar {
@@ -694,12 +962,18 @@ img {
   color: var(--highlight);
 }
 
-.start-panel a {
+.start-panel button {
   padding: 7px 8px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: default;
 }
 
-.start-panel a:hover,
-.start-panel a:focus-visible {
+.start-panel button:hover,
+.start-panel button:focus-visible {
   background: var(--title);
   color: var(--highlight);
 }
@@ -709,8 +983,12 @@ img {
   width: min(240px, 28vw);
   padding: 5px 10px;
   overflow: hidden;
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
   white-space: nowrap;
   text-overflow: ellipsis;
+  cursor: default;
 }
 
 .task-button.active {
