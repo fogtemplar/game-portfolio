@@ -8,23 +8,23 @@
       name="description"
       content="fogtemplar가 제작한 웹 게임 포트폴리오를 Windows 98 스타일의 OS 데스크톱으로 구성한 페이지입니다."
     />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./style.css?v=folders-2" />
   </head>
   <body>
     <div class="desktop-shell">
       <aside class="desktop-icons" aria-label="Desktop shortcuts">
-        <button class="desktop-icon" type="button" data-open-folder="root">
+        <a class="desktop-icon" href="#/folder/root" data-open-folder="root">
           <span class="icon icon-folder" aria-hidden="true"></span>
           <span>Games</span>
-        </button>
+        </a>
         <button class="desktop-icon" type="button" data-show-window="system-window">
           <span class="icon icon-computer" aria-hidden="true"></span>
           <span>System</span>
         </button>
-        <button class="desktop-icon" type="button" data-open-folder="github">
+        <a class="desktop-icon" href="#/folder/github" data-open-folder="github">
           <span class="icon icon-network" aria-hidden="true"></span>
           <span>GitHub</span>
-        </button>
+        </a>
         <button class="desktop-icon" type="button" data-show-window="readme-window">
           <span class="icon icon-document" aria-hidden="true"></span>
           <span>README</span>
@@ -55,7 +55,7 @@
 
           <div class="toolbar" aria-label="Explorer toolbar">
             <button class="tool-button" type="button" data-back disabled>Back</button>
-            <button class="tool-button" type="button" data-open-folder="root">Up</button>
+            <a class="tool-button" href="#/folder/root" data-open-folder="root">Up</a>
             <button class="tool-button" type="button" data-show-window="system-window">Properties</button>
             <div class="address-bar">
               <span>Address</span>
@@ -66,12 +66,12 @@
           <div class="explorer-body">
             <nav class="folder-tree" aria-label="Project folders">
               <p class="tree-title">Folders</p>
-              <button type="button" data-open-folder="root">Games</button>
-              <button type="button" data-open-folder="maple-td">Maple TD</button>
-              <button type="button" data-open-folder="maple-pang">Maple Pang</button>
-              <button type="button" data-open-folder="stige-adventure">Stige Adventure</button>
-              <button type="button" data-open-folder="nanaca-like-game">Nanaca-Like Game</button>
-              <button type="button" data-open-folder="github">GitHub</button>
+              <a href="#/folder/root" data-open-folder="root">Games</a>
+              <a href="#/folder/maple-td" data-open-folder="maple-td">Maple TD</a>
+              <a href="#/folder/maple-pang" data-open-folder="maple-pang">Maple Pang</a>
+              <a href="#/folder/stige-adventure" data-open-folder="stige-adventure">Stige Adventure</a>
+              <a href="#/folder/nanaca-like-game" data-open-folder="nanaca-like-game">Nanaca-Like Game</a>
+              <a href="#/folder/github" data-open-folder="github">GitHub</a>
             </nav>
 
             <div class="file-list" data-folder-view aria-live="polite"></div>
@@ -163,13 +163,13 @@
         <summary class="start-button">Start</summary>
         <div class="start-panel">
           <strong>fogtemplar 98</strong>
-          <button type="button" data-open-folder="root">Programs - Games</button>
+          <a href="#/folder/root" data-open-folder="root">Programs - Games</a>
           <button type="button" data-show-window="system-window">Settings - System</button>
           <button type="button" data-show-window="readme-window">Documents - README</button>
-          <button type="button" data-open-folder="github">Network - GitHub</button>
+          <a href="#/folder/github" data-open-folder="github">Network - GitHub</a>
         </div>
       </details>
-      <button class="task-button active" type="button" data-open-folder="root">Portfolio Explorer</button>
+      <a class="task-button active" href="#/folder/root" data-open-folder="root">Portfolio Explorer</a>
       <button class="task-button" type="button" data-show-window="system-window">System Properties</button>
       <button class="task-button" type="button" data-show-window="readme-window">README.txt</button>
       <div class="tray">
@@ -259,11 +259,11 @@
 
       function folderButton(id, project) {
         return `
-          <button class="folder-item" type="button" data-open-folder="${id}">
+          <a class="folder-item" href="#/folder/${id}" data-open-folder="${id}">
             ${iconMarkup("folder")}
             <span class="folder-name">${project.name}</span>
             <span class="folder-kind">File folder</span>
-          </button>
+          </a>
         `;
       }
 
@@ -333,6 +333,17 @@
         setPreview(project);
       }
 
+      function folderHash(id) {
+        return `#/folder/${id}`;
+      }
+
+      function folderFromHash() {
+        const match = window.location.hash.match(/^#\/folder\/([a-z0-9-]+)$/);
+        if (!match) return "";
+        const id = match[1];
+        return id === "root" || id === "github" || projects[id] ? id : "";
+      }
+
       function openFolder(id, pushHistory = true) {
         if (pushHistory && id !== currentFolder) historyStack.push(currentFolder);
         currentFolder = id;
@@ -358,8 +369,14 @@
       document.addEventListener("click", (event) => {
         const folderTarget = event.target.closest("[data-open-folder]");
         if (folderTarget) {
-          event.preventDefault();
-          openFolder(folderTarget.dataset.openFolder);
+          const id = folderTarget.dataset.openFolder;
+          if (folderTarget.tagName !== "A") {
+            event.preventDefault();
+          }
+          if (window.location.hash !== folderHash(id)) {
+            window.location.hash = folderHash(id);
+          }
+          openFolder(id);
           document.querySelector(".start-menu")?.removeAttribute("open");
           return;
         }
@@ -386,8 +403,16 @@
 
       backButton.addEventListener("click", () => {
         const previous = historyStack.pop();
-        if (previous) openFolder(previous, false);
+        if (previous) {
+          window.location.hash = folderHash(previous);
+          openFolder(previous, false);
+        }
         backButton.disabled = historyStack.length === 0;
+      });
+
+      window.addEventListener("hashchange", () => {
+        const nextFolder = folderFromHash();
+        if (nextFolder && nextFolder !== currentFolder) openFolder(nextFolder);
       });
 
       document.querySelectorAll("[data-tab]").forEach((tab) => {
@@ -411,7 +436,7 @@
         clock.dateTime = now.toISOString();
       }
 
-      openFolder("root", false);
+      openFolder(folderFromHash() || "root", false);
       updateClock();
       window.setInterval(updateClock, 30000);
     </script>

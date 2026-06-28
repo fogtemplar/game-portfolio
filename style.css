@@ -428,7 +428,8 @@ img {
   font-weight: 700;
 }
 
-.folder-tree button {
+.folder-tree button,
+.folder-tree a {
   padding: 2px 0;
   border: 0;
   background: transparent;
@@ -440,7 +441,8 @@ img {
   cursor: default;
 }
 
-.folder-tree button.selected {
+.folder-tree button.selected,
+.folder-tree a.selected {
   color: var(--highlight);
   background: var(--title);
   text-decoration: none;
@@ -962,7 +964,8 @@ img {
   color: var(--highlight);
 }
 
-.start-panel button {
+.start-panel button,
+.start-panel a {
   padding: 7px 8px;
   border: 0;
   background: transparent;
@@ -973,7 +976,9 @@ img {
 }
 
 .start-panel button:hover,
-.start-panel button:focus-visible {
+.start-panel button:focus-visible,
+.start-panel a:hover,
+.start-panel a:focus-visible {
   background: var(--title);
   color: var(--highlight);
 }
