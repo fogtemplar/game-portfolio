@@ -6,6 +6,8 @@ Windows 98 스타일의 가짜 OS 데스크톱으로 구성한 정적 게임 포
 
 `Games` 루트에는 프로젝트 폴더가 있고, 각 프로젝트 폴더 안에는 미리보기 파일,
 README 문서, GitHub 저장소 바로가기가 들어 있습니다.
+상태바, Object Details 창, System Properties 탭은 용량, 수정일, 버전, 조작 방식,
+빌드 상태 같은 프로젝트 메타데이터를 표시합니다.
 
 ## Repositories
 

@@ -9,19 +9,19 @@
       content="fogtemplar가 제작한 웹 게임 포트폴리오를 Windows 98 스타일의 OS 데스크톱으로 구성한 페이지입니다."
     />
     <meta http-equiv="Cache-Control" content="no-store" />
-    <link rel="stylesheet" href="./style.css?v=folders-3" />
+    <link rel="stylesheet" href="./style.css?v=details-1" />
   </head>
   <body>
     <div class="desktop-shell">
       <aside class="desktop-icons" aria-label="Desktop shortcuts">
+        <button class="desktop-icon" type="button" data-show-window="system-window">
+          <span class="icon icon-computer" aria-hidden="true"></span>
+          <span>My Computer</span>
+        </button>
         <a class="desktop-icon" href="#/folder/root" data-open-folder="root">
           <span class="icon icon-folder" aria-hidden="true"></span>
           <span>Games</span>
         </a>
-        <button class="desktop-icon" type="button" data-show-window="system-window">
-          <span class="icon icon-computer" aria-hidden="true"></span>
-          <span>System</span>
-        </button>
         <a class="desktop-icon" href="#/folder/github" data-open-folder="github">
           <span class="icon icon-network" aria-hidden="true"></span>
           <span>GitHub</span>
@@ -29,6 +29,10 @@
         <button class="desktop-icon" type="button" data-show-window="readme-window">
           <span class="icon icon-document" aria-hidden="true"></span>
           <span>README</span>
+        </button>
+        <button class="desktop-icon" type="button" data-show-window="recycle-window">
+          <span class="icon icon-recycle" aria-hidden="true"></span>
+          <span>Recycle Bin</span>
         </button>
       </aside>
 
@@ -57,11 +61,18 @@
           <div class="toolbar" aria-label="Explorer toolbar">
             <button class="tool-button" type="button" data-back disabled>Back</button>
             <a class="tool-button" href="#/folder/root" data-open-folder="root">Up</a>
+            <button class="tool-button" type="button" data-open-folder="github">Network</button>
             <button class="tool-button" type="button" data-show-window="system-window">Properties</button>
             <div class="address-bar">
               <span>Address</span>
               <strong data-address>C:\Portfolio\Games</strong>
             </div>
+          </div>
+
+          <div class="info-strip">
+            <span>Local Disk (C:)</span>
+            <span>View: Details + Icons</span>
+            <span data-selection>Nothing selected</span>
           </div>
 
           <div class="explorer-body">
@@ -81,6 +92,7 @@
           <div class="status-bar">
             <span data-count>0 object(s)</span>
             <span data-status>Ready</span>
+            <span data-size>0 KB</span>
           </div>
         </section>
 
@@ -117,12 +129,14 @@
             <div class="tabs" aria-label="System property tabs">
               <button class="active" type="button" data-tab="general">General</button>
               <button type="button" data-tab="stack">Stack</button>
+              <button type="button" data-tab="projects">Projects</button>
               <button type="button" data-tab="deploy">Deploy</button>
             </div>
             <div class="system-content" data-tab-panel="general">
               <p><strong>Portfolio OS:</strong> Web Game Portfolio 98</p>
               <p><strong>Owner:</strong> fogtemplar</p>
               <p><strong>Root:</strong> C:\Portfolio\Games</p>
+              <p><strong>Mode:</strong> Interactive folder navigation</p>
             </div>
             <div class="system-content is-hidden" data-tab-panel="stack">
               <ul>
@@ -131,9 +145,31 @@
                 <li>React/Vite 기반 HUD, 모달, 랭킹 UI, 정적 배포 구조</li>
               </ul>
             </div>
+            <div class="system-content is-hidden" data-tab-panel="projects">
+              <p><strong>Installed games:</strong> 4 folders</p>
+              <p><strong>Primary genres:</strong> Tower defense, puzzle shooter, action runner, physics action</p>
+              <p><strong>Repository owner:</strong> fogtemplar</p>
+            </div>
             <div class="system-content is-hidden" data-tab-panel="deploy">
               <p><strong>Repository:</strong> github.com/fogtemplar/game-portfolio</p>
               <p><strong>Pages:</strong> fogtemplar.github.io/game-portfolio</p>
+            </div>
+          </section>
+
+          <section class="window details-window" data-window="details-window" aria-labelledby="details-title">
+            <div class="title-bar inactive">
+              <div class="title-left">
+                <span class="mini-icon mini-document" aria-hidden="true"></span>
+                <h2 id="details-title">Object Details</h2>
+              </div>
+              <div class="window-controls">
+                <button type="button" aria-label="Minimize details" data-hide-window="details-window"></button>
+                <button type="button" aria-label="Restore details"></button>
+                <button type="button" aria-label="Close details" data-hide-window="details-window"></button>
+              </div>
+            </div>
+            <div class="details-body" data-details-panel>
+              <p>Select a folder or file to inspect its properties.</p>
             </div>
           </section>
 
@@ -153,6 +189,25 @@
               <p>fogtemplar Game Portfolio 98</p>
               <p>Windows 98 스타일의 Explorer 안에서 공개 게임 저장소를 폴더처럼 탐색합니다.</p>
               <p>각 프로젝트 폴더에는 미리보기 이미지, README 파일, GitHub 저장소 바로가기가 들어 있습니다.</p>
+              <p>상태바와 Object Details 창은 선택한 폴더/파일의 타입, 용량, 수정일, 기술 스택을 보여줍니다.</p>
+            </div>
+          </section>
+
+          <section class="window recycle-window is-hidden" data-window="recycle-window" aria-labelledby="recycle-title">
+            <div class="title-bar inactive">
+              <div class="title-left">
+                <span class="mini-icon mini-recycle" aria-hidden="true"></span>
+                <h2 id="recycle-title">Recycle Bin</h2>
+              </div>
+              <div class="window-controls">
+                <button type="button" aria-label="Minimize recycle bin" data-hide-window="recycle-window"></button>
+                <button type="button" aria-label="Restore recycle bin"></button>
+                <button type="button" aria-label="Close recycle bin" data-hide-window="recycle-window"></button>
+              </div>
+            </div>
+            <div class="empty-bin">
+              <span class="icon icon-recycle" aria-hidden="true"></span>
+              <p>Recycle Bin is empty.</p>
             </div>
           </section>
         </aside>
@@ -168,10 +223,12 @@
           <button type="button" data-show-window="system-window">Settings - System</button>
           <button type="button" data-show-window="readme-window">Documents - README</button>
           <a href="#/folder/github" data-open-folder="github">Network - GitHub</a>
+          <button type="button" data-show-window="recycle-window">Recycle Bin</button>
         </div>
       </details>
       <a class="task-button active" href="#/folder/root" data-open-folder="root">Portfolio Explorer</a>
       <button class="task-button" type="button" data-show-window="system-window">System Properties</button>
+      <button class="task-button" type="button" data-show-window="details-window">Object Details</button>
       <button class="task-button" type="button" data-show-window="readme-window">README.txt</button>
       <div class="tray">
         <span>KO</span>
@@ -188,6 +245,13 @@
           image: "./assets/maple-td.png",
           repo: "https://github.com/fogtemplar/maple-td",
           stack: ["TypeScript", "Vite", "Canvas"],
+          version: "1.0.0",
+          size: "18.4 MB",
+          files: "312 files",
+          modified: "2026-06-27 22:51",
+          controls: "Mouse placement, keyboard shortcuts",
+          build: "Static Vite build",
+          highlights: ["tower waves", "skill overlays", "local Maple assets"],
           description:
             "MapleStory풍 맵, 스킬, 타워, 적 웨이브, UI 오버레이를 갖춘 대형 타워 디펜스 프로젝트입니다.",
         },
@@ -198,6 +262,13 @@
           image: "./assets/maple-pang.png",
           repo: "https://github.com/fogtemplar/maple-pang",
           stack: ["React", "Mobile", "Boss Stage"],
+          version: "1.1.0",
+          size: "9.6 MB",
+          files: "128 files",
+          modified: "2026-06-27 21:48",
+          controls: "Touch drag, mouse aim",
+          build: "Mobile-first static build",
+          highlights: ["bubble matching", "boss stages", "responsive HUD"],
           description: "몬스터 버블을 조준해 같은 종류를 맞추고 스테이지를 클리어하는 모바일 중심 퍼즐 슈터입니다.",
         },
         "stige-adventure": {
@@ -207,6 +278,13 @@
           image: "./assets/stige-adventure.png",
           repo: "https://github.com/fogtemplar/stige-adventure",
           stack: ["React", "HUD", "Leaderboard"],
+          version: "0.9.5",
+          size: "14.2 MB",
+          files: "186 files",
+          modified: "2026-06-27 21:39",
+          controls: "Jump, move, item pickup",
+          build: "React game shell",
+          highlights: ["stage traversal", "items", "leaderboard UI"],
           description: "맵 이동, 점프, 아이템, 랭킹 UI를 갖춘 모바일 대응 웹 액션 게임입니다.",
         },
         "nanaca-like-game": {
@@ -216,6 +294,13 @@
           image: "",
           repo: "https://github.com/fogtemplar/nanaca-like-game",
           stack: ["Phaser", "React", "TypeScript"],
+          version: "0.8.0",
+          size: "5.9 MB",
+          files: "48 files",
+          modified: "2026-06-28 19:04",
+          controls: "Launch timing, item triggers",
+          build: "Phaser + React prototype",
+          highlights: ["physics launch", "missions", "upgrade loop"],
           description:
             "Phaser 기반의 발사, 비행, 아이템, 미션, 강화 시스템을 갖춘 Nanaca Crash 스타일 웹 게임입니다.",
         },
@@ -226,6 +311,9 @@
       const address = document.querySelector("[data-address]");
       const count = document.querySelector("[data-count]");
       const status = document.querySelector("[data-status]");
+      const sizeStatus = document.querySelector("[data-size]");
+      const selection = document.querySelector("[data-selection]");
+      const detailsPanel = document.querySelector("[data-details-panel]");
       const backButton = document.querySelector("[data-back]");
       const previewTitle = document.querySelector("[data-preview-title]");
       const previewImage = document.querySelector("[data-preview-image]");
@@ -241,6 +329,44 @@
 
       function chipsMarkup(items) {
         return items.map((item) => `<span>${item}</span>`).join("");
+      }
+
+      function detailRows(rows) {
+        return rows
+          .map(([label, value]) => `<div><dt>${label}</dt><dd>${value}</dd></div>`)
+          .join("");
+      }
+
+      function updateDetails(title, rows) {
+        selection.textContent = title;
+        detailsPanel.innerHTML = `<dl class="details-list">${detailRows(rows)}</dl>`;
+        document.querySelector('[data-window="details-window"]')?.classList.remove("is-hidden");
+      }
+
+      function showRootDetails() {
+        const totalSize = Object.values(projects).map((project) => project.size).join(" + ");
+        updateDetails("Games folder selected", [
+          ["Name", "Games"],
+          ["Type", "File folder"],
+          ["Location", "C:\\Portfolio"],
+          ["Contains", `${Object.keys(projects).length} project folders`],
+          ["Size", totalSize],
+          ["View", "Interactive Explorer"],
+        ]);
+      }
+
+      function showProjectDetails(project) {
+        updateDetails(`${project.name} folder selected`, [
+          ["Name", project.name],
+          ["Type", project.type],
+          ["Version", project.version],
+          ["Size", project.size],
+          ["Modified", project.modified],
+          ["Contents", project.files],
+          ["Controls", project.controls],
+          ["Build", project.build],
+          ["Highlights", project.highlights.join(", ")],
+        ]);
       }
 
       function projectPreview(project) {
@@ -265,6 +391,8 @@
             ${iconMarkup("folder")}
             <span class="folder-name">${project.name}</span>
             <span class="folder-kind">File folder</span>
+            <span class="folder-meta">${project.size}</span>
+            <span class="folder-date">${project.modified}</span>
           </a>
         `;
       }
@@ -276,6 +404,8 @@
         address.textContent = "C:\\Portfolio\\Games";
         count.textContent = `${Object.keys(projects).length} object(s)`;
         status.textContent = "File folders";
+        sizeStatus.textContent = "48.1 MB";
+        showRootDetails();
       }
 
       function renderGithubFolder() {
@@ -285,16 +415,35 @@
             ${iconMarkup("shortcut")}
             <span>fogtemplar.profile.url</span>
             <span>Internet Shortcut</span>
+            <span>1 KB</span>
+            <span>2026-06-27 22:12</span>
           </a>
           <a class="detail-file" href="https://github.com/fogtemplar/game-portfolio">
             ${iconMarkup("shortcut")}
             <span>game-portfolio.repository.url</span>
             <span>Internet Shortcut</span>
+            <span>1 KB</span>
+            <span>2026-06-28 20:00</span>
+          </a>
+          <a class="detail-file" href="https://fogtemplar.github.io/game-portfolio/">
+            ${iconMarkup("shortcut")}
+            <span>live-pages.url</span>
+            <span>Internet Shortcut</span>
+            <span>1 KB</span>
+            <span>2026-06-28 20:00</span>
           </a>
         `;
         address.textContent = "C:\\Portfolio\\Network\\GitHub";
-        count.textContent = "2 object(s)";
+        count.textContent = "3 object(s)";
         status.textContent = "Internet shortcuts";
+        sizeStatus.textContent = "3 KB";
+        updateDetails("GitHub network folder selected", [
+          ["Name", "GitHub"],
+          ["Type", "Network folder"],
+          ["Location", "C:\\Portfolio\\Network"],
+          ["Shortcuts", "Profile, repository, live Pages"],
+          ["Status", "Public"],
+        ]);
       }
 
       function renderProjectFolder(id) {
@@ -316,23 +465,56 @@
               </div>
             </div>
             <p>${project.description}</p>
+            <dl class="mini-props">
+              <div><dt>Version</dt><dd>${project.version}</dd></div>
+              <div><dt>Modified</dt><dd>${project.modified}</dd></div>
+              <div><dt>Size</dt><dd>${project.size}</dd></div>
+              <div><dt>Controls</dt><dd>${project.controls}</dd></div>
+            </dl>
             <div class="chips" aria-label="Tech stack">${chipsMarkup(project.stack)}</div>
           </div>
+          <button class="detail-file" type="button" data-select="${id}:preview">
+            ${iconMarkup("image")}
+            <span>${project.name}.preview</span>
+            <span>Preview File</span>
+            <span>512 KB</span>
+            <span>${project.modified}</span>
+          </button>
           <a class="detail-file" href="${project.repo}">
             ${iconMarkup("shortcut")}
             <span>${project.name}.repository.url</span>
             <span>Internet Shortcut</span>
+            <span>1 KB</span>
+            <span>${project.modified}</span>
           </a>
           <button class="detail-file" type="button" data-show-window="readme-window">
             ${iconMarkup("document")}
             <span>README.txt</span>
             <span>Text Document</span>
+            <span>4 KB</span>
+            <span>${project.modified}</span>
+          </button>
+          <button class="detail-file" type="button" data-select="${id}:controls">
+            ${iconMarkup("document")}
+            <span>Controls.ini</span>
+            <span>Configuration Settings</span>
+            <span>2 KB</span>
+            <span>${project.modified}</span>
+          </button>
+          <button class="detail-file" type="button" data-select="${id}:build">
+            ${iconMarkup("document")}
+            <span>Build.log</span>
+            <span>Log File</span>
+            <span>3 KB</span>
+            <span>${project.modified}</span>
           </button>
         `;
         address.textContent = project.path;
-        count.textContent = "4 object(s)";
+        count.textContent = "6 object(s)";
         status.textContent = `${project.name} folder`;
+        sizeStatus.textContent = project.size;
         setPreview(project);
+        showProjectDetails(project);
       }
 
       function folderHash(id) {
@@ -376,6 +558,46 @@
         document.querySelector(`[data-window="${name}"]`)?.classList.add("is-hidden");
       }
 
+      function selectProjectFile(value) {
+        const [projectId, fileType] = value.split(":");
+        const project = projects[projectId];
+        if (!project) return;
+
+        if (fileType === "preview") {
+          setPreview(project);
+          updateDetails(`${project.name}.preview selected`, [
+            ["Name", `${project.name}.preview`],
+            ["Type", "Preview File"],
+            ["Project", project.name],
+            ["Size", "512 KB"],
+            ["Modified", project.modified],
+            ["Source", project.image || "Generated CSS preview"],
+          ]);
+        }
+
+        if (fileType === "controls") {
+          updateDetails("Controls.ini selected", [
+            ["Name", "Controls.ini"],
+            ["Type", "Configuration Settings"],
+            ["Project", project.name],
+            ["Controls", project.controls],
+            ["Input", "Mouse, touch, keyboard where supported"],
+            ["Modified", project.modified],
+          ]);
+        }
+
+        if (fileType === "build") {
+          updateDetails("Build.log selected", [
+            ["Name", "Build.log"],
+            ["Type", "Log File"],
+            ["Project", project.name],
+            ["Build", project.build],
+            ["Repository", project.repo],
+            ["Modified", project.modified],
+          ]);
+        }
+      }
+
       document.addEventListener("click", (event) => {
         const folderTarget = event.target.closest("[data-open-folder]");
         if (folderTarget) {
@@ -392,6 +614,12 @@
         const previewTarget = event.target.closest("[data-preview]");
         if (previewTarget) {
           setPreview(projects[previewTarget.dataset.preview]);
+          return;
+        }
+
+        const selectTarget = event.target.closest("[data-select]");
+        if (selectTarget) {
+          selectProjectFile(selectTarget.dataset.select);
           return;
         }
 
