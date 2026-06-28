@@ -3,133 +3,240 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>fogtemplar Game Portfolio</title>
+    <title>fogtemplar Game Portfolio 98</title>
     <meta
       name="description"
-      content="fogtemplar가 제작한 웹 게임 포트폴리오. Maple Pang, Stige Adventure, Maple TD 등 GitHub 공개 저장소를 한 곳에서 볼 수 있습니다."
+      content="fogtemplar가 제작한 웹 게임 포트폴리오를 Windows 98 스타일의 OS 데스크톱으로 구성한 페이지입니다."
     />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <header class="hero">
-      <nav class="nav" aria-label="Portfolio navigation">
-        <a class="brand" href="./">fogtemplar.games</a>
-        <div class="nav-links">
-          <a href="#games">Games</a>
-          <a href="#stack">Stack</a>
-          <a href="https://github.com/fogtemplar">GitHub</a>
-        </div>
-      </nav>
+    <div class="desktop-shell">
+      <aside class="desktop-icons" aria-label="Desktop shortcuts">
+        <a class="desktop-icon" href="#games">
+          <span class="icon icon-folder" aria-hidden="true"></span>
+          <span>Games</span>
+        </a>
+        <a class="desktop-icon" href="#stack">
+          <span class="icon icon-computer" aria-hidden="true"></span>
+          <span>System</span>
+        </a>
+        <a class="desktop-icon" href="https://github.com/fogtemplar">
+          <span class="icon icon-network" aria-hidden="true"></span>
+          <span>GitHub</span>
+        </a>
+        <a class="desktop-icon" href="./README.md">
+          <span class="icon icon-document" aria-hidden="true"></span>
+          <span>README</span>
+        </a>
+      </aside>
 
-      <div class="hero-inner">
-        <div class="hero-copy">
-          <p class="eyebrow">Web Game Portfolio</p>
-          <h1>브라우저에서 바로 돌아가는 게임 작업물</h1>
-          <p>
-            MapleStory 스타일의 퍼즐 슈터, 러너, 타워 디펜스와 Phaser 기반 액션 게임을
-            공개 저장소로 정리했습니다. 각 프로젝트는 플레이 가능한 웹 게임을 목표로 만들었습니다.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#games">작업물 보기</a>
-            <a class="button secondary" href="https://github.com/fogtemplar">GitHub 프로필</a>
+      <main class="workspace">
+        <section id="games" class="window explorer-window" aria-labelledby="portfolio-title">
+          <div class="title-bar">
+            <div class="title-left">
+              <span class="mini-icon mini-folder" aria-hidden="true"></span>
+              <h1 id="portfolio-title">fogtemplar Game Portfolio</h1>
+            </div>
+            <div class="window-controls" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
           </div>
-        </div>
 
-        <div class="hero-media" aria-label="Game preview montage">
-          <img src="./assets/maple-td.png" alt="Maple TD preview" />
+          <div class="menu-bar" aria-label="Explorer menu">
+            <span>File</span>
+            <span>Edit</span>
+            <span>View</span>
+            <span>Favorites</span>
+            <span>Help</span>
+          </div>
+
+          <div class="toolbar" aria-label="Explorer toolbar">
+            <a class="tool-button" href="#games">Back</a>
+            <a class="tool-button" href="#stack">Properties</a>
+            <a class="tool-button" href="https://github.com/fogtemplar">GitHub</a>
+            <div class="address-bar">
+              <span>Address</span>
+              <strong>C:\Portfolio\Games</strong>
+            </div>
+          </div>
+
+          <div class="explorer-body">
+            <nav class="folder-tree" aria-label="Project folders">
+              <p class="tree-title">Folders</p>
+              <a href="https://github.com/fogtemplar/maple-td">Maple TD</a>
+              <a href="https://github.com/fogtemplar/maple-pang">Maple Pang</a>
+              <a href="https://github.com/fogtemplar/stige-adventure">Stige Adventure</a>
+              <a href="https://github.com/fogtemplar/nanaca-like-game">Nanaca-Like Game</a>
+            </nav>
+
+            <div class="file-list">
+              <article class="game-file featured">
+                <a class="preview" href="https://github.com/fogtemplar/maple-td">
+                  <img src="./assets/maple-td.png" alt="Maple TD preview" />
+                </a>
+                <div class="file-info">
+                  <p class="file-type">Tower Defense</p>
+                  <h2>Maple TD</h2>
+                  <p>
+                    MapleStory풍 맵, 스킬, 타워, 적 웨이브, UI 오버레이를 갖춘 대형 타워 디펜스 프로젝트입니다.
+                  </p>
+                  <div class="chips" aria-label="Tech stack">
+                    <span>TypeScript</span>
+                    <span>Vite</span>
+                    <span>Canvas</span>
+                  </div>
+                  <a class="win-button primary" href="https://github.com/fogtemplar/maple-td">Open Repository</a>
+                </div>
+              </article>
+
+              <article class="game-file">
+                <a class="preview" href="https://github.com/fogtemplar/maple-pang">
+                  <img src="./assets/maple-pang.png" alt="Maple Pang preview" />
+                </a>
+                <div class="file-info">
+                  <p class="file-type">Puzzle Shooter</p>
+                  <h2>Maple Pang</h2>
+                  <p>몬스터 버블을 조준해 같은 종류를 맞추고 스테이지를 클리어하는 모바일 중심 퍼즐 슈터입니다.</p>
+                  <div class="chips" aria-label="Tech stack">
+                    <span>React</span>
+                    <span>Mobile</span>
+                    <span>Boss Stage</span>
+                  </div>
+                  <a class="win-button" href="https://github.com/fogtemplar/maple-pang">Open Repository</a>
+                </div>
+              </article>
+
+              <article class="game-file">
+                <a class="preview" href="https://github.com/fogtemplar/stige-adventure">
+                  <img src="./assets/stige-adventure.png" alt="Stige Adventure preview" />
+                </a>
+                <div class="file-info">
+                  <p class="file-type">Action Runner</p>
+                  <h2>Stige Adventure</h2>
+                  <p>맵 이동, 점프, 아이템, 랭킹 UI를 갖춘 모바일 대응 웹 액션 게임입니다.</p>
+                  <div class="chips" aria-label="Tech stack">
+                    <span>React</span>
+                    <span>HUD</span>
+                    <span>Leaderboard</span>
+                  </div>
+                  <a class="win-button" href="https://github.com/fogtemplar/stige-adventure">Open Repository</a>
+                </div>
+              </article>
+
+              <article class="game-file">
+                <a
+                  class="preview nanaca-preview"
+                  href="https://github.com/fogtemplar/nanaca-like-game"
+                  aria-label="Nanaca-Like Game repository"
+                >
+                  <span>Nanaca-Like<br />Game.exe</span>
+                </a>
+                <div class="file-info">
+                  <p class="file-type">Physics Action</p>
+                  <h2>Nanaca-Like Game</h2>
+                  <p>Phaser 기반의 발사, 비행, 아이템, 미션, 강화 시스템을 갖춘 Nanaca Crash 스타일 웹 게임입니다.</p>
+                  <div class="chips" aria-label="Tech stack">
+                    <span>Phaser</span>
+                    <span>React</span>
+                    <span>TypeScript</span>
+                  </div>
+                  <a class="win-button" href="https://github.com/fogtemplar/nanaca-like-game">Open Repository</a>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="status-bar">
+            <span>4 object(s)</span>
+            <span>Public GitHub repositories</span>
+          </div>
+        </section>
+
+        <aside class="side-stack">
+          <section class="window preview-window" aria-label="Featured game preview">
+            <div class="title-bar inactive">
+              <div class="title-left">
+                <span class="mini-icon mini-image" aria-hidden="true"></span>
+                <h2>Preview Player</h2>
+              </div>
+              <div class="window-controls" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+            <div class="preview-screen">
+              <img src="./assets/maple-td.png" alt="Maple TD gameplay preview" />
+            </div>
+          </section>
+
+          <section id="stack" class="window system-window" aria-labelledby="system-title">
+            <div class="title-bar">
+              <div class="title-left">
+                <span class="mini-icon mini-computer" aria-hidden="true"></span>
+                <h2 id="system-title">System Properties</h2>
+              </div>
+              <div class="window-controls" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+            <div class="tabs" aria-label="System property tabs">
+              <span class="active">General</span>
+              <span>Stack</span>
+              <span>Deploy</span>
+            </div>
+            <div class="system-content">
+              <p><strong>Portfolio OS:</strong> Web Game Portfolio 98</p>
+              <p><strong>Owner:</strong> fogtemplar</p>
+              <ul>
+                <li>Canvas 기반 게임 루프와 모바일 터치 조작</li>
+                <li>MapleStory풍 로컬 에셋, BGM/SFX, 스프라이트 애니메이션</li>
+                <li>React/Vite 기반 HUD, 모달, 랭킹 UI, 정적 배포 구조</li>
+              </ul>
+            </div>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <footer class="taskbar" aria-label="Windows 98 style taskbar">
+      <details class="start-menu">
+        <summary class="start-button">Start</summary>
+        <div class="start-panel">
+          <strong>fogtemplar 98</strong>
+          <a href="#games">Programs - Games</a>
+          <a href="#stack">Settings - System</a>
+          <a href="https://github.com/fogtemplar">Network - GitHub</a>
         </div>
+      </details>
+      <a class="task-button active" href="#games">Portfolio Explorer</a>
+      <a class="task-button" href="#stack">System Properties</a>
+      <div class="tray">
+        <span>KO</span>
+        <time id="clock" datetime="2026-06-28T00:00:00+09:00">--:--</time>
       </div>
-    </header>
+    </footer>
 
-    <main>
-      <section id="games" class="section">
-        <div class="section-head">
-          <p class="eyebrow">Public Repositories</p>
-          <h2>게임 프로젝트</h2>
-        </div>
+    <script>
+      const clock = document.getElementById("clock");
 
-        <div class="game-grid">
-          <article class="game-card featured">
-            <a class="thumb" href="https://github.com/fogtemplar/maple-td">
-              <img src="./assets/maple-td.png" alt="Maple TD preview" />
-            </a>
-            <div class="card-body">
-              <p class="tag">Tower Defense</p>
-              <h3>Maple TD</h3>
-              <p>MapleStory풍 맵, 스킬, 타워, 적 웨이브, UI 오버레이를 갖춘 대형 타워 디펜스 프로젝트입니다.</p>
-              <div class="meta">
-                <span>TypeScript</span>
-                <span>Vite</span>
-                <span>Canvas</span>
-              </div>
-              <a class="repo-link" href="https://github.com/fogtemplar/maple-td">Repository</a>
-            </div>
-          </article>
+      function updateClock() {
+        const now = new Date();
+        clock.textContent = now.toLocaleTimeString("ko-KR", {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false,
+        });
+        clock.dateTime = now.toISOString();
+      }
 
-          <article class="game-card">
-            <a class="thumb" href="https://github.com/fogtemplar/maple-pang">
-              <img src="./assets/maple-pang.png" alt="Maple Pang preview" />
-            </a>
-            <div class="card-body">
-              <p class="tag">Puzzle Shooter</p>
-              <h3>Maple Pang</h3>
-              <p>몬스터 버블을 조준해 같은 종류를 맞추고 스테이지를 클리어하는 모바일 중심 퍼즐 슈터입니다.</p>
-              <div class="meta">
-                <span>React</span>
-                <span>Mobile</span>
-                <span>Boss Stage</span>
-              </div>
-              <a class="repo-link" href="https://github.com/fogtemplar/maple-pang">Repository</a>
-            </div>
-          </article>
-
-          <article class="game-card">
-            <a class="thumb" href="https://github.com/fogtemplar/stige-adventure">
-              <img src="./assets/stige-adventure.png" alt="Stige Adventure preview" />
-            </a>
-            <div class="card-body">
-              <p class="tag">Action Runner</p>
-              <h3>Stige Adventure</h3>
-              <p>맵 이동, 점프, 아이템, 랭킹 UI를 갖춘 모바일 대응 웹 액션 게임입니다.</p>
-              <div class="meta">
-                <span>React</span>
-                <span>HUD</span>
-                <span>Leaderboard</span>
-              </div>
-              <a class="repo-link" href="https://github.com/fogtemplar/stige-adventure">Repository</a>
-            </div>
-          </article>
-
-          <article class="game-card">
-            <a class="thumb nanaca-preview" href="https://github.com/fogtemplar/nanaca-like-game" aria-label="Nanaca-Like Game repository">
-              <span>Nanaca-Like Game</span>
-            </a>
-            <div class="card-body">
-              <p class="tag">Physics Action</p>
-              <h3>Nanaca-Like Game</h3>
-              <p>Phaser 기반의 발사, 비행, 아이템, 미션, 강화 시스템을 갖춘 Nanaca Crash 스타일 웹 게임입니다.</p>
-              <div class="meta">
-                <span>Phaser</span>
-                <span>React</span>
-                <span>TypeScript</span>
-              </div>
-              <a class="repo-link" href="https://github.com/fogtemplar/nanaca-like-game">Repository</a>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="stack" class="section stack">
-        <div>
-          <p class="eyebrow">Build Focus</p>
-          <h2>구현 포인트</h2>
-        </div>
-        <ul>
-          <li>Canvas 기반 게임 루프와 모바일 터치 조작</li>
-          <li>MapleStory풍 로컬 에셋, BGM/SFX, 스프라이트 애니메이션</li>
-          <li>React/Vite 기반 HUD, 모달, 랭킹 UI, 배포 가능한 정적 빌드</li>
-        </ul>
-      </section>
-    </main>
+      updateClock();
+      window.setInterval(updateClock, 30000);
+    </script>
   </body>
 </html>

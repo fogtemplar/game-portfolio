@@ -1,6 +1,8 @@
-# fogtemplar Game Portfolio
+# fogtemplar Game Portfolio 98
 
-Static portfolio page for the public game repositories under `fogtemplar`.
+Windows 98 스타일의 가짜 OS 데스크톱으로 구성한 정적 게임 포트폴리오입니다.
+바탕화면 아이콘, Explorer 창, System Properties 창, Start 메뉴, 작업표시줄 형태로
+`fogtemplar`의 공개 게임 저장소를 보여줍니다.
 
 ## Repositories
 
