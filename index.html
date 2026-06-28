@@ -8,7 +8,8 @@
       name="description"
       content="fogtemplar가 제작한 웹 게임 포트폴리오를 Windows 98 스타일의 OS 데스크톱으로 구성한 페이지입니다."
     />
-    <link rel="stylesheet" href="./style.css?v=folders-2" />
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <link rel="stylesheet" href="./style.css?v=folders-3" />
   </head>
   <body>
     <div class="desktop-shell">
@@ -32,16 +33,16 @@
       </aside>
 
       <main class="workspace">
-        <section id="games" class="window explorer-window" aria-labelledby="portfolio-title">
+        <section id="games" class="window explorer-window" data-window="explorer-window" aria-labelledby="portfolio-title">
           <div class="title-bar">
             <div class="title-left">
               <span class="mini-icon mini-folder" aria-hidden="true"></span>
               <h1 id="portfolio-title">fogtemplar Game Portfolio</h1>
             </div>
-            <div class="window-controls" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
+            <div class="window-controls">
+              <button type="button" aria-label="Minimize portfolio explorer" data-hide-window="explorer-window"></button>
+              <button type="button" aria-label="Restore portfolio explorer" data-show-window="explorer-window"></button>
+              <button type="button" aria-label="Close portfolio explorer" data-hide-window="explorer-window"></button>
             </div>
           </div>
 
@@ -221,6 +222,7 @@
       };
 
       const folderView = document.querySelector("[data-folder-view]");
+      const explorerWindow = document.querySelector('[data-window="explorer-window"]');
       const address = document.querySelector("[data-address]");
       const count = document.querySelector("[data-count]");
       const status = document.querySelector("[data-status]");
@@ -344,7 +346,15 @@
         return id === "root" || id === "github" || projects[id] ? id : "";
       }
 
+      function focusExplorer() {
+        explorerWindow.classList.remove("is-hidden", "is-focused");
+        void explorerWindow.offsetWidth;
+        explorerWindow.classList.add("is-focused");
+        explorerWindow.scrollIntoView({ block: "nearest" });
+      }
+
       function openFolder(id, pushHistory = true) {
+        focusExplorer();
         if (pushHistory && id !== currentFolder) historyStack.push(currentFolder);
         currentFolder = id;
         backButton.disabled = historyStack.length === 0;
@@ -369,10 +379,8 @@
       document.addEventListener("click", (event) => {
         const folderTarget = event.target.closest("[data-open-folder]");
         if (folderTarget) {
+          event.preventDefault();
           const id = folderTarget.dataset.openFolder;
-          if (folderTarget.tagName !== "A") {
-            event.preventDefault();
-          }
           if (window.location.hash !== folderHash(id)) {
             window.location.hash = folderHash(id);
           }
@@ -412,7 +420,7 @@
 
       window.addEventListener("hashchange", () => {
         const nextFolder = folderFromHash();
-        if (nextFolder && nextFolder !== currentFolder) openFolder(nextFolder);
+        if (nextFolder) openFolder(nextFolder, false);
       });
 
       document.querySelectorAll("[data-tab]").forEach((tab) => {

@@ -212,6 +212,16 @@ img {
   min-width: 0;
 }
 
+.window.is-focused {
+  animation: focus-flash 260ms steps(2, end) 2;
+}
+
+@keyframes focus-flash {
+  50% {
+    filter: brightness(1.08);
+  }
+}
+
 .title-bar {
   min-height: 28px;
   padding: 3px 4px 3px 6px;
